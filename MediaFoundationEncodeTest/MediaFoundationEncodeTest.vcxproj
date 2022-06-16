@@ -85,7 +85,8 @@
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
-      <AdditionalManifestFiles>manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -107,7 +108,8 @@
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
-      <AdditionalManifestFiles>manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,7 +127,8 @@
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
-      <AdditionalManifestFiles>manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,7 +150,8 @@
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
-      <AdditionalManifestFiles>manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -160,16 +164,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="manifest.xml">
-      <FileType>Manifest</FileType>
-    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,15 @@
 #include "stdafx.h"
+#include "main.h"
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
 	switch (msg) {
 	case WM_DESTROY:
 		PostQuitMessage(0);
+		return 0;
+	case WM_COMMAND:
+		switch (LOWORD(wp)) {
+		case BUTTON_ID1:
+			MessageBox(hwnd, L"AA", L"bB", MB_OK);
+		}
 		return 0;
 	}
 	return DefWindowProcW(hwnd, msg, wp, lp);
@@ -28,6 +35,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, NULL, hInstance, NULL);
+	CreateWindow(L"BUTTON", L"Button1", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 0, 0, 100, 50, hwnd, (HMENU)BUTTON_ID1, hInstance, nullptr);
 	if (hwnd == NULL) return -1;
 	while (GetMessage(&msg, NULL, 0, 0))DispatchMessage(&msg);
 	return msg.wParam;
