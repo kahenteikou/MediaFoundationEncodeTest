@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "main.h"
+#pragma comment(lib,"comctl32")
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
 	switch (msg) {
 	case WM_DESTROY:
@@ -18,7 +19,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	HWND hwnd;
 	MSG msg;
 	WNDCLASS wc;
-
+	InitCommonControls();
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.lpfnWndProc = WndProc;
@@ -34,7 +35,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		CW_USEDEFAULT, CW_USEDEFAULT,
-		NULL, NULL, hInstance, NULL);
+		NULL, LoadMenu(hInstance, MAKEINTRESOURCE(IDR_MENU1)), hInstance, NULL);
 	CreateWindow(L"BUTTON", L"Button1", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 0, 0, 100, 50, hwnd, (HMENU)BUTTON_ID1, hInstance, nullptr);
 	if (hwnd == NULL) return -1;
 	while (GetMessage(&msg, NULL, 0, 0))DispatchMessage(&msg);
