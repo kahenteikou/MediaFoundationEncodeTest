@@ -2,7 +2,11 @@
 #include "main.h"
 #pragma comment(lib,"comctl32")
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
+	static HWND button1;
 	switch (msg) {
+	case WM_CREATE:
+		button1=CreateWindow(L"BUTTON", L"Button1", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 0, 0, 100, 50, hwnd, (HMENU)BUTTON_ID1, ((LPCREATESTRUCT)(lp))->hInstance, nullptr);
+		return 0;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
@@ -10,8 +14,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
 		switch (LOWORD(wp)) {
 		case BUTTON_ID1:
 			MessageBox(hwnd, L"AA", L"bB", MB_OK);
+			break;
+		case ID_FILE_EXIT:
+			PostQuitMessage(0);
+			return 0;
+			break;
 		}
 		return 0;
+
 	}
 	return DefWindowProcW(hwnd, msg, wp, lp);
 }
@@ -36,7 +46,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, LoadMenu(hInstance, MAKEINTRESOURCE(IDR_MENU1)), hInstance, NULL);
-	CreateWindow(L"BUTTON", L"Button1", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 0, 0, 100, 50, hwnd, (HMENU)BUTTON_ID1, hInstance, nullptr);
 	if (hwnd == NULL) return -1;
 	while (GetMessage(&msg, NULL, 0, 0))DispatchMessage(&msg);
 	return msg.wParam;

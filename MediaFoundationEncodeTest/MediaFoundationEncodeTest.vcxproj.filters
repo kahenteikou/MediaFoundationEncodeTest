@@ -38,9 +38,4 @@
       <Filter>リソース ファイル</Filter>
     </ResourceCompile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ribbon1.mfcribbon-ms">
-      <Filter>リソース ファイル</Filter>
-    </None>
-  </ItemGroup>
 </Project>
